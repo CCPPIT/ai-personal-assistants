@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { v } from "convex/values";
+
 import { mutation } from "./_generated/server";
 
 export const insertSelectedUserAiAssistants = mutation({
@@ -30,6 +31,7 @@ export const insertSelectedUserAiAssistants = mutation({
 
     // التحقق من وجود المستخدم
     const user = await ctx.db.get(args.userId);
+
     if (!user) {
       throw new Error("User not found");
     }
@@ -47,6 +49,7 @@ export const insertSelectedUserAiAssistants = mutation({
 
       return insertedRecords;
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.error("Failed to insert assistants:", error);
       throw new Error("Failed to insert assistants");
     }

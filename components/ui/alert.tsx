@@ -25,11 +25,12 @@ const Alert = React.forwardRef<
 >(({ className, variant, ...props }, ref) => (
   <div
     ref={ref}
-    role="alert"
     className={cn(alertVariants({ variant }), className)}
+    role="alert"
     {...props}
   />
 ));
+
 Alert.displayName = "Alert";
 
 const AlertTitle = React.forwardRef<
@@ -42,6 +43,7 @@ const AlertTitle = React.forwardRef<
     {...props}
   />
 ));
+
 AlertTitle.displayName = "AlertTitle";
 
 const AlertDescription = React.forwardRef<
@@ -54,6 +56,7 @@ const AlertDescription = React.forwardRef<
     {...props}
   />
 ));
+
 AlertDescription.displayName = "AlertDescription";
 
 export { Alert, AlertTitle, AlertDescription };

@@ -52,7 +52,9 @@ export const getUser=query({
     .withIndex("by_userId")
     .filter((q)=>q.eq(q.field("userId"),args.userId))
     .first();
+
     if(!user) return null;
+
     return user
   }
 })
@@ -88,6 +90,7 @@ export const insertSelectedUserAiAssistants = mutation({
 
     // التحقق من وجود المستخدم
     const user = await ctx.db.get(args.userId);
+
     if (!user) {
       throw new Error("User not found");
     }
@@ -125,6 +128,7 @@ export const getUserById = query({
     if (!user) {
       throw new Error("User not found");
     }
+
     return user;
   },
 });

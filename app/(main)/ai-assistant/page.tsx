@@ -8,16 +8,12 @@ import { siteConfig } from "@/config/site";
 import { title, subtitle } from "../_components/primitives";
 import { GithubIcon } from "@/components/icons";
 import { Link } from "@heroui/link";
-import { Snippet } from "@heroui/snippet";
-import { Code } from "@heroui/code";
 import AiAssistantsList from '@/constants/AiAssistantsList';
 import { Checkbox } from '@/components/ui/checkbox';
 import { BlurFade } from '@/components/ui/blur-fade';
-import { ShimmerButton } from '@/components/magicui/shimmer-button';
 import { RainbowButton } from '@/components/magicui/rainbow-button';
-import { useMutation, useQuery } from 'convex/react';
+import { useMutation } from 'convex/react';
 import { api } from '@/convex/_generated/api';
-import {Id} from '@/convex/_generated/dataModel'
 
 
 
@@ -41,7 +37,7 @@ const AIAssistant =() => {
 // - `useState<ASSISTANT[]>([])`: تهيئة الحالة بمصفوفة فارغة من نوع ASSISTANT
 
 const [selectedAssistants, setSelectedAssistants] = useState<ASSISTANT[]>([]);
-const insertAssistant=useMutation(api.users.insertSelectedUserAiAssistants);
+// const insertAssistant=useMutation(api.users.insertSelectedUserAiAssistants);
 // bun install --ignore-scripts
 
 
@@ -171,7 +167,7 @@ const isSelectedAssistant = (assistant: ASSISTANT) => {
 
         <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4'>
           {AiAssistantsList.map((assistant,index) => (
-            <BlurFade key={assistant.image} delay={0.25+index*0.05} inView>
+            <BlurFade key={assistant.image} inView delay={0.25+index*0.05}>
             <Card 
               key={assistant.id} 
               isFooterBlurred 
@@ -180,8 +176,8 @@ const isSelectedAssistant = (assistant: ASSISTANT) => {
               <CardHeader className="absolute z-10 top-1 flex-col items-start">
                 <Checkbox 
                   checked={isSelectedAssistant(assistant)}
-                  onCheckedChange={() => onSelectAssistant(assistant)}
                   className='absolute m-2'
+                  onCheckedChange={() => onSelectAssistant(assistant)}
                 />
               </CardHeader>
               
@@ -189,9 +185,9 @@ const isSelectedAssistant = (assistant: ASSISTANT) => {
                 removeWrapper
                 alt={assistant.title}
                 className="z-0 w-full h-[300px] object-cover"
+                height={300}
                 src={assistant.image}
                 width={300}
-                height={300}
               />
               
               <CardFooter className="absolute bg-black/40 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100">
@@ -207,10 +203,10 @@ const isSelectedAssistant = (assistant: ASSISTANT) => {
                   </div>
                 </div>
                 <Button 
-                  variant={isSelectedAssistant(assistant) ?  "solid":"bordered"}
                   color="primary"
-                  radius="full" 
-                  size="sm"
+                  radius="full"
+                  size="sm" 
+                  variant={isSelectedAssistant(assistant) ?  "solid":"bordered"}
                   onPress={() => onSelectAssistant(assistant)}
                 >
                   {isSelectedAssistant(assistant) ? "Selected" : "Select"}

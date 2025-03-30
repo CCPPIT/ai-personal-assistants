@@ -136,10 +136,10 @@ const Carousel = React.forwardRef<
       >
         <div
           ref={ref}
-          onKeyDownCapture={handleKeyDown}
+          aria-roledescription="carousel"
           className={cn("relative", className)}
           role="region"
-          aria-roledescription="carousel"
+          onKeyDownCapture={handleKeyDown}
           {...props}
         >
           {children}
@@ -148,6 +148,7 @@ const Carousel = React.forwardRef<
     );
   },
 );
+
 Carousel.displayName = "Carousel";
 
 const CarouselContent = React.forwardRef<
@@ -170,6 +171,7 @@ const CarouselContent = React.forwardRef<
     </div>
   );
 });
+
 CarouselContent.displayName = "CarouselContent";
 
 const CarouselItem = React.forwardRef<
@@ -181,17 +183,18 @@ const CarouselItem = React.forwardRef<
   return (
     <div
       ref={ref}
-      role="group"
       aria-roledescription="slide"
       className={cn(
         "min-w-0 shrink-0 grow-0 basis-full",
         orientation === "horizontal" ? "pl-4" : "pt-4",
         className,
       )}
+      role="group"
       {...props}
     />
   );
 });
+
 CarouselItem.displayName = "CarouselItem";
 
 const CarouselPrevious = React.forwardRef<
@@ -203,8 +206,6 @@ const CarouselPrevious = React.forwardRef<
   return (
     <Button
       ref={ref}
-      variant={variant}
-      size={size}
       className={cn(
         "absolute  h-8 w-8 rounded-full",
         orientation === "horizontal"
@@ -213,6 +214,8 @@ const CarouselPrevious = React.forwardRef<
         className,
       )}
       disabled={!canScrollPrev}
+      size={size}
+      variant={variant}
       onClick={scrollPrev}
       {...props}
     >
@@ -221,6 +224,7 @@ const CarouselPrevious = React.forwardRef<
     </Button>
   );
 });
+
 CarouselPrevious.displayName = "CarouselPrevious";
 
 const CarouselNext = React.forwardRef<
@@ -232,8 +236,6 @@ const CarouselNext = React.forwardRef<
   return (
     <Button
       ref={ref}
-      variant={variant}
-      size={size}
       className={cn(
         "absolute h-8 w-8 rounded-full",
         orientation === "horizontal"
@@ -242,6 +244,8 @@ const CarouselNext = React.forwardRef<
         className,
       )}
       disabled={!canScrollNext}
+      size={size}
+      variant={variant}
       onClick={scrollNext}
       {...props}
     >
@@ -250,6 +254,7 @@ const CarouselNext = React.forwardRef<
     </Button>
   );
 });
+
 CarouselNext.displayName = "CarouselNext";
 
 export {

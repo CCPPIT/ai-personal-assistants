@@ -58,20 +58,21 @@ export function BlurFade({
     },
   };
   const combinedVariants = variant || defaultVariants;
+
   return (
     <AnimatePresence>
       <motion.div
         ref={ref}
-        initial="hidden"
         animate={isInView ? "visible" : "hidden"}
+        className={className}
         exit="hidden"
-        variants={combinedVariants}
+        initial="hidden"
         transition={{
           delay: 0.04 + delay,
           duration,
           ease: "easeOut",
         }}
-        className={className}
+        variants={combinedVariants}
         {...props}
       >
         {children}

@@ -21,10 +21,9 @@ import {
   import NextLink from "next/link";
   // eslint-disable-next-line @typescript-eslint/no-unused-vars, unused-imports/no-unused-imports
   import clsx from "clsx";
-  import dynamic from 'next/dynamic';
+  
 
-
-  import { siteConfig } from "@/config/site";
+import { siteConfig } from "@/config/site";
   import { ThemeSwitch } from "@/components/theme-switch";
   import {
     TwitterIcon,
@@ -34,7 +33,6 @@ import {
     SearchIcon,
     Logo,
   } from "@/components/icons";
-import { title } from "./primitives";
 import { UserButton } from "@clerk/nextjs";
   
   export const Navbar = () => {
