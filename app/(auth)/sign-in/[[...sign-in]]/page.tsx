@@ -10,23 +10,8 @@ import { siteConfig } from "@/config/site";
 import { title, subtitle } from "@/components/primitives";
 import { GithubIcon } from "@/components/icons";
 import { Button } from "@/components/ui/button";
-type Props = {};
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const SignInPage = (props: Props) => {
-  // const googleLogin = useGoogleLogin({
-  //   onSuccess: async (tokenResponse) => {
-  //     console.log(tokenResponse);
-  //     localStorage.setItem("user_token", tokenResponse.access_token);
-  //     const userInfo = await axios.get(
-  //       "https://www.googleapis.com/oauth2/v3/userinfo",
-  //       { headers: { Authorization: `Bearer${tokenResponse.access_token}` } },
-  //     );
 
-  //     console.log(userInfo);
-  //   },
-  //   onError: (errorResponse) => console.log(errorResponse),
-  // });
-
+export default function SignInPage() {
   return (
     <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
       <div className="inline-block max-w-xl text-center justify-center">
@@ -51,7 +36,6 @@ const SignInPage = (props: Props) => {
             radius: "full",
             variant: "shadow",
           })}
-          //   href={''}
         >
           <Button onClick={() => <SignIn />}>Sign in With Gmail</Button>
         </Link>
@@ -74,6 +58,4 @@ const SignInPage = (props: Props) => {
       </div>
     </section>
   );
-};
-
-export default SignIn;
+}
